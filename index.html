@@ -17,15 +17,16 @@
       text-align: right;
       padding: 50px 20px;
       font-size: 7.5em;
-      line-height: 0.80;
+      line-height: 1.01;
       direction: rtl;
     }
 
-    a {
+    .track {
+      position: relative;
+      display: block;
       color: blue;
       text-decoration: underline;
-      display: block;
-      margin: 4px 0;
+      margin: 2px 0;
       cursor: pointer;
     }
 
@@ -33,52 +34,69 @@
       color: purple;
     }
 
-    #floating-player {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      display: none;
-      z-index: 1000;
+    .track::after {
+      content: '\25B6'; /* Play symbol */
+      position: absolute;
+      left: -1.2em;
+      top: 0;
+      font-size: 1em;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    .track:hover::after {
+      opacity: 1;
+    }
+
+    .playing::after {
+      content: '\2759\2759'; /* Pause symbol */
+      opacity: 1;
     }
 
     #audio-player {
-      border-radius: 999px;
-      background-color: transparent;
-      padding: 4px;
-      height: 120px;
-      width: 600px;
-      border: none;
+      display: none;
+    }
+
+    .ss01 {
+      font-feature-settings: "ss01";
     }
   </style>
 </head>
 <body>
-  <a onclick="playTrack('alon.mp3')">אלון תייר</a>
-  <a onclick="playTrack('aran.mp3')">ארן הרדי</a>
-  <a onclick="playTrack('daniel.mp3')">דניאל דור</a>
-  <a onclick="playTrack('amudim.mp3')" class="purple">בית העמודים</a>
-  <a onclick="playTrack('sets.mp3')">שני סטים: 20:30+22:00</a>
-  <a onclick="playTrack('date.mp3')">ב 13 לאפריל, 2025</a>
+  <span class="track" onclick="playTrack(this, 'alon.mp3')">אלון תייר</span>
+  <span class="track" onclick="playTrack(this, 'aran.mp3')">ארן הרדי</span>
+  <span class="track ss01" onclick="playTrack(this, 'daniel.mp3')">דניאל דור</span>
+  <span class="track purple" onclick="playTrack(this, 'amudim.mp3')">בית העמודים</span>
+  <span class="track" onclick="playTrack(this, 'sets.mp3')">שני סטים: 20:30+22:00</span>
+  <span class="track ss01" onclick="playTrack(this, 'date.mp3')">ב 13 לאפריל, 2025</span>
 
-  <div id="floating-player">
-    <audio id="audio-player" controls autoplay></audio>
-  </div>
+  <audio id="audio-player" controls autoplay></audio>
 
   <script>
-    function playTrack(src) {
-      const player = document.getElementById('floating-player');
+    let currentPlaying = null;
+
+    function playTrack(element, src) {
       const audio = document.getElementById('audio-player');
+
+      if (currentPlaying && currentPlaying !== element) {
+        currentPlaying.classList.remove('playing');
+      }
+
       if (audio.src.includes(src)) {
         if (audio.paused) {
           audio.play();
+          element.classList.add('playing');
         } else {
           audio.pause();
+          element.classList.remove('playing');
         }
       } else {
         audio.src = src;
         audio.play();
+        element.classList.add('playing');
       }
-      player.style.display = 'block';
+
+      currentPlaying = element;
     }
   </script>
 </body>
