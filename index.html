@@ -17,8 +17,8 @@
       font-family: 'Frank', sans-serif;
       text-align: right;
       padding: 4vw 4vw;
-      font-size: clamp(10vw, 4vw, 5vw); /* Smaller on desktop, larger on mobile */
-      line-height: 1.0001;
+      font-size: clamp(11vw, 3.7vw, 4.5vw); /* Larger on mobile, smaller on desktop */
+      line-height: 1.00001;
       direction: rtl;
     }
 
@@ -38,25 +38,29 @@
     .track::after {
       content: '';
       position: absolute;
-      left: -1.2em;
-      top: 0;
-      font-size: 1em;
+      left: -1.4em;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 1em;
+      height: 1em;
+      background-image: url('play@2x.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
       opacity: 0;
-      font-family: monospace; /* Use monospace to ensure it avoids emoji */
     }
 
     .track:hover::after {
-      content: '\003E'; /* Use '>' instead of triangle to guarantee no emoji */
       opacity: 1;
     }
 
     .playing::after {
-      content: '\2759\2759'; /* Pause symbol */
+      background-image: url('pause@2x.png');
       opacity: 1;
     }
 
     .playing:hover::after {
-      content: '\2759\2759';
+      background-image: url('pause@2x.png');
     }
 
     #audio-player {
