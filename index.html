@@ -17,8 +17,8 @@
       font-family: 'Frank', sans-serif;
       text-align: right;
       padding: 4vw 4vw;
-      font-size: clamp(9vw, 3.5vw, 6vw); /* Improved desktop size, good mobile scale */
-      line-height: 1.0001;
+      font-size: clamp(10vw, 3vw, 4.5vw); /* Increased mobile size, slightly reduced desktop */
+      line-height: 1.00001;
       direction: rtl;
     }
 
@@ -27,7 +27,7 @@
       display: inline-block;
       color: blue;
       text-decoration: underline;
-      margin: 0;
+      margin: -2px 0; /* tighter spacing between lines */
       cursor: pointer;
     }
 
@@ -48,7 +48,8 @@
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center;
-      background-color: #f2f2df; /* match site background */
+      background-color: transparent;
+      mix-blend-mode: multiply; /* reduce visible edges */
       opacity: 0;
     }
 
