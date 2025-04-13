@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>אלון תייר בבית העמודים</title>
+  <style>
+    @font-face {
+      font-family: 'Frank';
+      src: url('Frank.woff2') format('woff2');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    body {
+      background-color: #eeeedc;
+      font-family: 'Frank', sans-serif;
+      text-align: right;
+      padding: 50px 20px;
+      font-size: 7.5em;
+      line-height: 1.03;
+      direction: rtl;
+    }
+
+    a {
+      color: blue;
+      text-decoration: underline;
+      display: block;
+      margin: 4px 0;
+      cursor: pointer;
+    }
+
+    .purple {
+      color: purple;
+    }
+
+    #floating-player {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: none;
+      z-index: 1000;
+    }
+
+    #audio-player {
+      border-radius: 999px;
+      background-color: transparent;
+      padding: 4px;
+      height: 120px;
+      width: 600px;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <a onclick="playTrack('alon.mp3')">אלון תייר</a>
+  <a onclick="playTrack('aran.mp3')">ארן הרדי</a>
+  <a onclick="playTrack('daniel.mp3')">דניאל דור</a>
+  <a onclick="playTrack('amudim.mp3')" class="purple">בית העמודים</a>
+  <a onclick="playTrack('sets.mp3')">שני סטים: 20:30+22:00</a>
+  <a onclick="playTrack('date.mp3')">ב 13 לאפריל, 2025</a>
+
+  <div id="floating-player">
+    <audio id="audio-player" controls autoplay></audio>
+  </div>
+
+  <script>
+    function playTrack(src) {
+      const player = document.getElementById('floating-player');
+      const audio = document.getElementById('audio-player');
+      if (audio.src.includes(src)) {
+        if (audio.paused) {
+          audio.play();
+        } else {
+          audio.pause();
+        }
+      } else {
+        audio.src = src;
+        audio.play();
+      }
+      player.style.display = 'block';
+    }
+  </script>
+</body>
+</html>
