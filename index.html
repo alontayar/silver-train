@@ -17,8 +17,8 @@
       font-family: 'Frank', sans-serif;
       text-align: right;
       padding: 4vw 4vw;
-      font-size: clamp(5vw, 6.5vw, 7vw);
-      line-height: 1.001;
+      font-size: clamp(8vw, 5.5vw, 5.5vw);
+      line-height: 1.0005;
       direction: rtl;
     }
 
@@ -27,9 +27,8 @@
       display: inline-block;
       color: blue;
       text-decoration: underline;
-      margin: 0.5px 0;
+      margin: 0px;
       cursor: pointer;
-      font-variant-emoji: none;
     }
 
     .purple {
@@ -43,7 +42,7 @@
       top: 0;
       font-size: 1em;
       opacity: 0;
-      font-family: sans-serif;
+      font-family: 'Frank', sans-serif;
     }
 
     .track:hover::after {
@@ -88,7 +87,6 @@
     function playTrack(element, src) {
       const audio = document.getElementById('audio-player');
 
-      // Stop current track if clicking same element again
       if (currentPlaying === element) {
         if (!audio.paused) {
           audio.pause();
