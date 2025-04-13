@@ -17,7 +17,7 @@
       font-family: 'Frank', sans-serif;
       text-align: right;
       padding: 4vw 4vw;
-      font-size: clamp(12vw, 2.9vw, 4.8vw); /* Slightly larger mobile, smaller desktop */
+      font-size: clamp(12vw, 2vw, 4.8vw);
       line-height: 1.00001;
       direction: rtl;
     }
@@ -33,6 +33,7 @@
 
     .purple {
       color: purple;
+      font-style: italic;
     }
 
     .track::after {
@@ -47,8 +48,8 @@
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center;
+      background-color: transparent;
       opacity: 0;
-      image-rendering: auto;
     }
 
     .track:hover::after {
