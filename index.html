@@ -17,7 +17,7 @@
       font-family: 'Frank', sans-serif;
       text-align: right;
       padding: 4vw 4vw;
-      font-size: clamp(11vw, 3.7vw, 4.5vw); /* Larger on mobile, smaller on desktop */
+      font-size: clamp(12vw, 2.9vw, 4.8vw); /* Slightly larger mobile, smaller desktop */
       line-height: 1.00001;
       direction: rtl;
     }
@@ -38,16 +38,17 @@
     .track::after {
       content: '';
       position: absolute;
-      left: -1.4em;
+      left: -0.9em;
       top: 50%;
       transform: translateY(-50%);
-      width: 1em;
-      height: 1em;
+      width: 0.7em;
+      height: 0.7em;
       background-image: url('play@2x.png');
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center;
       opacity: 0;
+      image-rendering: auto;
     }
 
     .track:hover::after {
