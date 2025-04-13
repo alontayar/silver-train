@@ -16,9 +16,9 @@
       background-color: #eeeedc;
       font-family: 'Frank', sans-serif;
       text-align: right;
-      padding: 5vw 4vw;
-      font-size: 7.5vw;
-      line-height: 1.01;
+      padding: 4vw 4vw;
+      font-size: clamp(5vw, 6.5vw, 7vw);
+      line-height: 1.005;
       direction: rtl;
     }
 
@@ -27,7 +27,7 @@
       display: inline-block;
       color: blue;
       text-decoration: underline;
-      margin: 2px 0;
+      margin: 1px 0;
       cursor: pointer;
     }
 
@@ -55,7 +55,7 @@
     }
 
     .playing:hover::after {
-      content: '\2759\2759'; /* Pause stays */
+      content: '\2759\2759';
     }
 
     #audio-player {
@@ -74,7 +74,7 @@
   <span class="track" onclick="playTrack(this, 'aran.mp3')">ארן הרדי</span><br>
   <span class="track ss01" onclick="playTrack(this, 'daniel.mp3')">דניאל דור</span><br>
   <span class="track purple" onclick="playTrack(this, 'amudim.mp3')">בית העמודים</span><br>
-  <span class="track" onclick="playTrack(this, 'sets.mp3')">שני סטים: 20:30+22:00</span><br>
+  <span class="track" onclick="playTrack(this, 'sets.mp3')">שני סטים:</span><br>
   <span class="track" onclick="playTrack(this, 'times.mp3')">20:30+22:00</span><br>
   <span class="track ss01" onclick="playTrack(this, 'date.mp3')">13 לאפריל, 2025</span>
 
