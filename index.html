@@ -18,7 +18,7 @@
       text-align: right;
       padding: 4vw 4vw;
       font-size: clamp(5vw, 6.5vw, 7vw);
-      line-height: 1.005;
+      line-height: 1.001;
       direction: rtl;
     }
 
@@ -27,8 +27,9 @@
       display: inline-block;
       color: blue;
       text-decoration: underline;
-      margin: 1px 0;
+      margin: 0.5px 0;
       cursor: pointer;
+      font-variant-emoji: none;
     }
 
     .purple {
@@ -42,6 +43,7 @@
       top: 0;
       font-size: 1em;
       opacity: 0;
+      font-family: sans-serif;
     }
 
     .track:hover::after {
@@ -86,24 +88,23 @@
     function playTrack(element, src) {
       const audio = document.getElementById('audio-player');
 
+      // Stop current track if clicking same element again
+      if (currentPlaying === element) {
+        if (!audio.paused) {
+          audio.pause();
+        }
+        element.classList.remove('playing');
+        currentPlaying = null;
+        return;
+      }
+
       if (currentPlaying && currentPlaying !== element) {
         currentPlaying.classList.remove('playing');
       }
 
-      if (audio.src.includes(src)) {
-        if (audio.paused) {
-          audio.play();
-          element.classList.add('playing');
-        } else {
-          audio.pause();
-          element.classList.remove('playing');
-        }
-      } else {
-        audio.src = src;
-        audio.play();
-        element.classList.add('playing');
-      }
-
+      audio.src = src;
+      audio.play();
+      element.classList.add('playing');
       currentPlaying = element;
     }
   </script>
