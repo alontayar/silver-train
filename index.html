@@ -17,8 +17,8 @@
       font-family: 'Frank', sans-serif;
       text-align: right;
       padding: 4vw 4vw;
-      font-size: clamp(8vw, 5.5vw, 5.5vw);
-      line-height: 1.0005;
+      font-size: clamp(10vw, 4vw, 5vw); /* Smaller on desktop, larger on mobile */
+      line-height: 1.0001;
       direction: rtl;
     }
 
@@ -27,7 +27,7 @@
       display: inline-block;
       color: blue;
       text-decoration: underline;
-      margin: 0px;
+      margin: 0;
       cursor: pointer;
     }
 
@@ -42,11 +42,11 @@
       top: 0;
       font-size: 1em;
       opacity: 0;
-      font-family: 'Frank', sans-serif;
+      font-family: monospace; /* Use monospace to ensure it avoids emoji */
     }
 
     .track:hover::after {
-      content: '\25B6'; /* Play symbol */
+      content: '\003E'; /* Use '>' instead of triangle to guarantee no emoji */
       opacity: 1;
     }
 
